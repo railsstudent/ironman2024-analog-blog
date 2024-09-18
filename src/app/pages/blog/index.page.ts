@@ -5,7 +5,7 @@ import { RouterLink } from '@angular/router';
 import { RouteMeta } from '@analogjs/router';
 
 export const routeMeta: RouteMeta = {
-  title: 'Blog List',
+  title: 'Blog Archive',
 };
 
 @Component({
