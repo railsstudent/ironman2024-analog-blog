@@ -1,4 +1,9 @@
+import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
+
+export const routeMeta: RouteMeta = {
+    title: 'About Connie',
+};
 
 @Component({
   selector: 'app-home',
@@ -8,10 +13,10 @@ import { Component } from '@angular/core';
     <section class="introduction">
         <p>Hello. My name is Connie and I am an Angular GDE from Hong Kong.</p>
         <p>I am a passionate software engineer and content creator who is constantly learning about the latest web technology to level up my skills.</p>
-        <p>When I am not working, I love to exercise, learn foreign languages, and create contents to show the new features and best practices of the <span class="framework">Angular</span> framework.</p>
+        <p>When I am not working, I love to exercise, learn foreign languages, and create content    to show the new features and best practices of the <span class="framework">Angular</span> framework.</p>
     </section>
     <section class="tech">
-        <p>Current Tech Stack<p>
+        <p>Current Technical Stack<p>
         <ul>
             <li>Angular</li>
             <li>Vue</li>
@@ -47,5 +52,4 @@ import { Component } from '@angular/core';
     }
   `,
 })
-export default class HomeComponent {
-}
+export default class HomeComponent {}
