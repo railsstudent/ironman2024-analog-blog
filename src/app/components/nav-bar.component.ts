@@ -19,10 +19,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   `,
   styles: `
     ul {
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: space-around;
-      align-items: stretch;
     }
 
     ul > li {
