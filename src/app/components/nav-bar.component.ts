@@ -10,7 +10,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       <ul class="navbar">
         @for (link of links; track link.url) {
           <li>
-            <a [routerLink]="link.url" routerLinkActive="active">{{ link.text }}</a>
+            <a [routerLink]="link.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ link.text }}</a>
           </li>
         }
         <li>&nbsp;</li>
