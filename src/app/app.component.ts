@@ -7,7 +7,7 @@ import { NavBarComponent } from './components/nav-bar.component';
   standalone: true,
   imports: [RouterOutlet, NavBarComponent],
   template: `
-    <blog-nav-bar />
+    <blog-nav-bar class="navbar" />
     <router-outlet></router-outlet>
   `,
   styles: [
@@ -20,7 +20,14 @@ import { NavBarComponent } from './components/nav-bar.component';
         
         display: grid;
         grid-template-rows: 60px 1fr 250px;
-      
+        grid-template-columns: 1fr;
+        grid-template-areas: "header"
+                             "body"
+                             "footer"
+      }
+
+      .navbar {
+        grid-area: header;
       }
     `,
   ],
