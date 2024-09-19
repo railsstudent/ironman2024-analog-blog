@@ -10,8 +10,7 @@ import { NavBarComponent } from './components/nav-bar.component';
     <blog-nav-bar class="navbar" />
     <router-outlet></router-outlet>
   `,
-  styles: [
-    `
+  styles: `
       :host {
         max-width: 1280px;
         margin: 0 auto;
@@ -30,6 +29,5 @@ import { NavBarComponent } from './components/nav-bar.component';
         grid-area: header;
       }
     `,
-  ],
 })
 export class AppComponent {}

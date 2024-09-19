@@ -6,10 +6,10 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterLinkActive],
   template: `
-    <nav>
-      <ul class="navbar">
+    <nav class="h-full">
+      <ul class="h-full flex items-center justify-around">
         @for (link of links; track link.url) {
-          <li>
+          <li class="text-[1rem]">
             <a [routerLink]="link.url" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">{{ link.text }}</a>
           </li>
         }
@@ -18,17 +18,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
     </nav>
   `,
   styles: `
-    ul {
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-    }
-
-    ul > li {
-      font-size: 1rem;
-    }
-
     .active {
       color: darkgray;
       font-weight: 700;
