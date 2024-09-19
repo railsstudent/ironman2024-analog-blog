@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { NavBarComponent } from './components/nav-bar.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, NavBarComponent],
   template: `
-    <nav>
-      <a href="/">Home</a>
-    </nav>
+    <blog-nav-bar />
     <router-outlet></router-outlet>
   `,
   styles: [
@@ -18,11 +17,10 @@ import { RouterOutlet } from '@angular/router';
         margin: 0 auto;
         padding: 2rem;
         text-align: center;
-      }
-
-      nav {
-        text-align: left;
-        padding: 0 0 2rem 0;
+        
+        display: grid;
+        grid-template-rows: 60px 1fr 250px;
+      
       }
     `,
   ],

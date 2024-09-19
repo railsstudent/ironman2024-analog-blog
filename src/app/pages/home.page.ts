@@ -9,7 +9,7 @@ export const routeMeta: RouteMeta = {
   selector: 'app-home',
   standalone: true,
   template: `
-    <h1>Home</h1>
+    <h1>Welcome to my blog!!!</h1>
     <section class="introduction">
         <p>Hello. My name is Connie and I am an Angular GDE from Hong Kong.</p>
         <p>I am a passionate software engineer and content creator who is constantly learning about the latest web technology to level up my skills.</p>
@@ -19,23 +19,31 @@ export const routeMeta: RouteMeta = {
         <p>Current Technical Stack<p>
         <ul>
             <li>Angular</li>
-            <li>Vue</li>
+            <li>Vue (Composition API)</li>
             <li>NestJS</li>
-            <li>HTMX (I love using it when I don't want to use any frontend framework.)</li>
+            <li>HTMX</li>
             <li>PostgreSQL</li>
+        </ul>
+    </section>
+    <section>
+        <p>Areas of Interest</p>
+        <ul>
+            <li>Angular Architecture</li>
+            <li>Rest API</li>
+            <li>Generative AI</li>
         </ul>
     </section>
   `,
   styles: `
-    section.introduction {
+    section {
         margin-bottom: 1rem;
     }
 
-    section.tech {
-        text-align: left;
+    section.tech, section.interest {
+        text-align: center;
 
         li {
-            list-style: circle;
+            list-style: none;
             font-size: 1.1rem;
             margin-left: 1.25rem;
         }
