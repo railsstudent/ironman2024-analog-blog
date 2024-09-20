@@ -32,7 +32,7 @@ import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
         </div>
       </div>
       <div>
-        <p>Powered by AnalogJS</p>
+        <p>Powered by <a href="https://analogjs.org/" target="_blank">AnalogJS</a></p>
       </div>
     </footer>
   `,
