@@ -18,7 +18,7 @@ import { NavFooterComponent } from './components/nav-footer.component';
       :host {
         max-width: 1280px;
         margin: 0 auto;
-        padding: 2rem;
+        padding: 1.25rem;
         text-align: center;
         
         display: grid;
