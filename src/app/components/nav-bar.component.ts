@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
@@ -24,6 +24,7 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
       text-decoration: underline;
     }
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavBarComponent {
   links = [
