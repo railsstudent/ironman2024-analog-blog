@@ -1,4 +1,5 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { NgComponentOutlet } from '@angular/common';
+import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { SocialMedia } from '../types/social-media.type';
 import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from './icons/github-icon.component';
 import { SocialMediaComponent } from './social-media.component';
@@ -6,7 +7,7 @@ import { SocialMediaComponent } from './social-media.component';
 @Component({
   selector: 'blog-nav-footer',
   standalone: true,
-  imports: [SocialMediaComponent, GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent],
+  imports: [SocialMediaComponent, GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent, NgComponentOutlet],
   template: `
     <footer class="p-2 h-full flex flex-col justify-center">
       <div class="flex justify-between">
@@ -15,15 +16,11 @@ import { SocialMediaComponent } from './social-media.component';
         </div>
         @let sm = socialMedia();
         <div class="flex flex-row basis-1/4">
-          <blog-social-media [information]="sm.github" class="grow shrink basic-1/3">
-            <blog-github-icon />
-          </blog-social-media>
-          <blog-social-media [information]="sm.twitterX" class="grow shrink basic-1/3">  
-            <blog-twitter-x-icon />
-          </blog-social-media>
-          <blog-social-media [information]="sm.linkedin" class="grow shrink basic-1/3">  
-            <blog-linkedin-icon />
-          </blog-social-media>          
+          @for (key of keys(); track key) {
+            <blog-social-media [information]="sm[key]" class="grow shrink basic-1/3">
+              <ng-container *ngComponentOutlet="getComponentByKey(key)" />
+            </blog-social-media>
+          }
         </div>
       </div>
       <div>
@@ -36,22 +33,31 @@ import { SocialMediaComponent } from './social-media.component';
 export class NavFooterComponent {
   year = signal(new Date().getFullYear());
 
-  socialMedia = signal<{
-    github: SocialMedia,
-    twitterX: SocialMedia,
-    linkedin:SocialMedia,
-  }>({
+  socialMedia = signal<{ [key: string]: SocialMedia }>({
     github: {
       href: 'https://github.com/railsstudent',
       text: 'Github',
     },
-    twitterX: {
+    twitter: {
       href: 'https://x.com/connieleung404',
-      text: 'Twitter X',
+      text: 'Twitter',
     },
     linkedin: {
       href: 'https://www.linkedin.com/in/connieleung107/',
       text: 'Linkedin',
     }
   });
+
+  keys = computed(() => Object.keys(this.socialMedia()));
+
+  getComponentByKey(key: string) {
+    switch (key) {
+      case 'github':
+        return GithubIconComponent
+      case 'twitter':
+        return TwitterXIconComponent;
+      default:
+        return LinkedinIconComponent;
+    }
+  }
 }
