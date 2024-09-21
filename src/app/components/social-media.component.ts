@@ -6,8 +6,7 @@ import { SocialMedia } from '../types/social-media.type';
   standalone: true,
   template: `
     @let info = information();
-    @let ariaDescription = info.ariaDescribedBy || info.text;
-    <a [href]="info.href" target="_blank" [ariaDescription]="ariaDescription">
+    <a [href]="info.href" target="_blank" [ariaDescription]="info.text">
       <span class="mr-2">{{ info.text }}</span>  
       <ng-content />
     </a>`,

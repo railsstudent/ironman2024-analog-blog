@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
-import { SocialMediaComponent } from './social-media.component';
 import { SocialMedia } from '../types/social-media.type';
 import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from './icons/github-icon.component';
+import { SocialMediaComponent } from './social-media.component';
 
 @Component({
   selector: 'blog-nav-footer',
@@ -13,14 +13,15 @@ import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } fro
         <div>
           <p>Copyright &#64; {{ year() }} - All right reserved.</p>
         </div>
+        @let sm = socialMedia();
         <div class="flex flex-row basis-1/4">
-          <blog-social-media [information]="github()" class="grow shrink basic-1/3">
+          <blog-social-media [information]="sm.github" class="grow shrink basic-1/3">
             <blog-github-icon />
           </blog-social-media>
-          <blog-social-media [information]="twitter()" class="grow shrink basic-1/3">  
+          <blog-social-media [information]="sm.twitterX" class="grow shrink basic-1/3">  
             <blog-twitter-x-icon />
           </blog-social-media>
-          <blog-social-media [information]="linkedin()" class="grow shrink basic-1/3">  
+          <blog-social-media [information]="sm.linkedin" class="grow shrink basic-1/3">  
             <blog-linkedin-icon />
           </blog-social-media>          
         </div>
@@ -35,19 +36,22 @@ import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } fro
 export class NavFooterComponent {
   year = signal(new Date().getFullYear());
 
-  github = signal<SocialMedia>({
-    href: 'https://github.com/railsstudent',
-    text: 'Github',
-  });
-
-  twitter = signal<SocialMedia>({
-    href: 'https://x.com/connieleung404',
-    text: 'X',
-    ariaDescribedBy: 'X',
-  });
-
-  linkedin = signal<SocialMedia>({
-    href: 'https://www.linkedin.com/in/connieleung107/',
-    text: 'Linkedin',
+  socialMedia = signal<{
+    github: SocialMedia,
+    twitterX: SocialMedia,
+    linkedin:SocialMedia,
+  }>({
+    github: {
+      href: 'https://github.com/railsstudent',
+      text: 'Github',
+    },
+    twitterX: {
+      href: 'https://x.com/connieleung404',
+      text: 'Twitter X',
+    },
+    linkedin: {
+      href: 'https://www.linkedin.com/in/connieleung107/',
+      text: 'Linkedin',
+    }
   });
 }
