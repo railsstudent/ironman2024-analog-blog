@@ -1,7 +1,7 @@
 import { NgComponentOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
 import { SocialMedia } from '../types/social-media.type';
-import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from './icons/github-icon.component';
+import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from './icons.component';
 import { SocialMediaComponent } from './social-media.component';
 
 @Component({
@@ -14,11 +14,10 @@ import { SocialMediaComponent } from './social-media.component';
         <div>
           <p>Copyright &#64; {{ year() }} - All right reserved.</p>
         </div>
-        @let sm = socialMedia();
         <div class="flex flex-row basis-1/4">
           @for (key of keys(); track key) {
-            <blog-social-media [information]="sm[key]" class="grow shrink basic-1/3">
-              <ng-container *ngComponentOutlet="getComponentByKey(key)" />
+            <blog-social-media [information]="socialMedia()[key]" class="grow shrink basic-1/3">
+              <ng-container *ngComponentOutlet="components()[key]" />
             </blog-social-media>
           }
         </div>
@@ -49,15 +48,9 @@ export class NavFooterComponent {
   });
 
   keys = computed(() => Object.keys(this.socialMedia()));
-
-  getComponentByKey(key: string) {
-    switch (key) {
-      case 'github':
-        return GithubIconComponent
-      case 'twitter':
-        return TwitterXIconComponent;
-      default:
-        return LinkedinIconComponent;
-    }
-  }
+  components = computed(() => ({
+      github: GithubIconComponent,
+      twitter: TwitterXIconComponent,
+      linkedin: LinkedinIconComponent
+    } as { [key: string] : any }));
 }
