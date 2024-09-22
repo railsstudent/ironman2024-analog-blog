@@ -1,5 +1,7 @@
 import { NgComponentOutlet } from '@angular/common';
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { SocialMediaService } from '../services/social-media.service';
 import { SocialMedia } from '../types/social-media.type';
 import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from './icons.component';
 import { SocialMediaComponent } from './social-media.component';
@@ -12,7 +14,7 @@ import { SocialMediaComponent } from './social-media.component';
     <footer class="p-2 h-full flex flex-col justify-center">
       <div class="flex justify-between">
         <div>
-          <p>Copyright &#64; {{ year() }} - All right reserved.</p>
+          <p>Copyright &#64; {{ year }} - All right reserved.</p>
         </div>
         <div class="flex flex-row basis-1/4">
           @for (key of keys(); track key) {
@@ -30,22 +32,10 @@ import { SocialMediaComponent } from './social-media.component';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NavFooterComponent {
-  year = signal(new Date().getFullYear());
+  socialMediaService = inject(SocialMediaService);
 
-  socialMedia = signal<{ [key: string]: SocialMedia }>({
-    github: {
-      href: 'https://github.com/railsstudent',
-      text: 'Github',
-    },
-    twitter: {
-      href: 'https://x.com/connieleung404',
-      text: 'Twitter',
-    },
-    linkedin: {
-      href: 'https://www.linkedin.com/in/connieleung107/',
-      text: 'Linkedin',
-    }
-  });
+  year = new Date().getFullYear();
+  socialMedia = toSignal(this.socialMediaService.getProfiles(), { initialValue: {} as { [key: string]: SocialMedia } });
 
   keys = computed(() => Object.keys(this.socialMedia()));
   components = computed(() => ({
