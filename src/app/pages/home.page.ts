@@ -12,65 +12,40 @@ export const routeMeta: RouteMeta = {
   imports: [CardComponent],
   template: `
     <h1>Welcome to my blog!!!</h1>
-    <section class="introduction">
+    <section class="introduction mb-4">
         <p>Hello. My name is Connie and I am an Angular GDE from Hong Kong.</p>
         <p>I am a passionate software engineer and content creator who is constantly learning about the latest web technology to level up my skills.</p>
-        <p>When I am not working, I love to exercise, learn foreign languages, and create content    to show the new features and best practices of the <span class="framework">Angular</span> framework.</p>
+        <p>When I am not working, I love to exercise, learn foreign languages, and create content    to show the new features and best practices of the <span class="framework underline italic">Angular</span> framework.</p>
     </section>
-    <section class="tech">
-        <p>Current Technical Stack<p>
-        <ul>
-            <li>Angular</li>
-            <li>Vue (Composition API)</li>
-            <li>NestJS</li>
-            <li>HTMX</li>
-            <li>PostgreSQL</li>
-        </ul>
+    <section class="flex justify-evenly">
+        <blog-card>
+            <p header class="text-xl underline">Current Technical Stack<p>
+            <ul class="text-left list-disc p-5">
+                <li>Angular</li>
+                <li>Vue (Composition API)</li>
+                <li>NestJS</li>
+                <li>JavaScript</li>
+                <li>HTMX</li>
+                <li>PostgreSQL</li>
+            </ul>
+        </blog-card>
+        <blog-card>
+            <p header class="text-xl underline">Areas of Interest<p>
+            <ul class="text-left list-disc p-5">
+                <li>Angular Architecture</li>
+                <li>REST API</li>
+                <li>Generative AI</li>
+            </ul>
+        </blog-card>
+        <blog-card>
+            <p header class="text-xl underline">Hobbies<p>
+            <ul class="text-left list-disc p-5">
+                <li>Learn Foreign Language</li>
+                <li>Learn Tech</li>
+                <li>Exercise</li>
+            </ul>
+        </blog-card>
     </section>
-    <section>
-        <p>Areas of Interest</p>
-        <ul>
-            <li>Angular Architecture</li>
-            <li>Rest API</li>
-            <li>Generative AI</li>
-        </ul>
-    </section>
-    <blog-card>
-        <p header>Current Technical Stack<p>
-        <ul class="text-left list-disc p-5">
-            <li>Angular</li>
-            <li>Vue (Composition API)</li>
-            <li>NestJS</li>
-            <li>JavaScript</li>
-            <li>HTMX</li>
-            <li>PostgreSQL</li>
-        </ul>
-    </blog-card>
-  `,
-  styles: `
-    section {
-        margin-bottom: 1rem;
-    }
-
-    section.tech, section.interest {
-        text-align: center;
-
-        li {
-            list-style: none;
-            font-size: 1.1rem;
-            margin-left: 1.25rem;
-        }
-    }
-
-    p {
-        font-size: 1.5rem;
-        line-height: 2rem;
-    }
-
-    .framework {
-        text-decoration: underline;
-        font-style: italic;
-    }
   `,
 })
 export default class HomeComponent {}
