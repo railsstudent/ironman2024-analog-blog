@@ -1,5 +1,6 @@
 import { RouteMeta } from '@analogjs/router';
 import { Component } from '@angular/core';
+import { CardComponent } from '../components/card.component';
 
 export const routeMeta: RouteMeta = {
     title: 'About Connie',
@@ -8,6 +9,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-home',
   standalone: true,
+  imports: [CardComponent],
   template: `
     <h1>Welcome to my blog!!!</h1>
     <section class="introduction">
@@ -33,6 +35,17 @@ export const routeMeta: RouteMeta = {
             <li>Generative AI</li>
         </ul>
     </section>
+    <blog-card>
+        <p header>Current Technical Stack<p>
+        <ul class="text-left list-disc p-5">
+            <li>Angular</li>
+            <li>Vue (Composition API)</li>
+            <li>NestJS</li>
+            <li>JavaScript</li>
+            <li>HTMX</li>
+            <li>PostgreSQL</li>
+        </ul>
+    </blog-card>
   `,
   styles: `
     section {
