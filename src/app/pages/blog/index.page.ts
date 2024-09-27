@@ -1,5 +1,6 @@
 import { injectContentFiles } from '@analogjs/content';
 import { RouteMeta } from '@analogjs/router';
+import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { CardComponent } from '../../components/card.component';
@@ -12,7 +13,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [RouterLink, CardComponent],
+  imports: [RouterLink, CardComponent, DatePipe],
   template: `
     <h1 class="mb-6">Blog Archive</h1>
     <div class="flex flex-wrap justify-around">
@@ -23,7 +24,9 @@ export const routeMeta: RouteMeta = {
           <h2 class="m-0 pl-5 underline text-2xl mb-4">{{ attributes.title }}</h2>
           <p class="text-left m-0 mb-4">{{ attributes.description }}</p>
           <div footer class="flex justify-between px-5">
-            <p><span class="text-[#646cff]">Date Published:</span> {{ attributes.datePublished }}</p>
+            <p class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">
+              {{ attributes.datePublished | date:'MMMM dd, YYYY' }}
+            </p>
             <a class="block" [routerLink]="['/blog/', attributes.slug]">Read</a>
           </div>
         </blog-card>
@@ -33,6 +36,7 @@ export const routeMeta: RouteMeta = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BlogComponent {
-  readonly posts = injectContentFiles<PostAttributes>((contentFile) =>
-  contentFile.filename.includes('/src/content'));
+  readonly posts = injectContentFiles<PostAttributes>();
+
+
 }
