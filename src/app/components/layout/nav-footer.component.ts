@@ -1,10 +1,10 @@
 import { NgComponentOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { SocialMediaService } from '../services/social-media.service';
-import { SocialMedia } from '../types/social-media.type';
-import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from './icons.component';
-import { SocialMediaComponent } from './social-media.component';
+import { SocialMediaService } from '../../services/social-media.service';
+import { SocialMedia } from '../../types/social-media.type';
+import { GithubIconComponent, LinkedinIconComponent, TwitterXIconComponent } from '../icons.component';
+import { SocialMediaComponent } from '../social-media.component';
 
 @Component({
   selector: 'blog-nav-footer',
