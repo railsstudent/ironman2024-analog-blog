@@ -17,10 +17,9 @@ export const routeMeta: RouteMeta = {
   template: `
     <h1 class="mb-6">Blog Archive</h1>
     <div class="flex flex-wrap justify-around">
-      {{ posts.length }}
       @for (post of posts; track post.attributes.slug) {
         @let attributes = post.attributes;
-        <blog-card class="grow shrink basis-1/3 mb-8">
+        <blog-card class="grow shrink basis-1/3 mb-8 h-full">
           <h2 class="m-0 pl-5 underline text-2xl mb-4">{{ attributes.title }}</h2>
           <p class="text-left m-0 mb-4">{{ attributes.description }}</p>
           <div footer class="flex justify-between px-5">
@@ -36,7 +35,10 @@ export const routeMeta: RouteMeta = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BlogComponent {
-  readonly posts = injectContentFiles<PostAttributes>();
+  readonly posts = injectContentFiles<PostAttributes>().sort(({attributes: aAttributes }, { attributes: bAttributes}) => { 
+    const firstDate = new Date(aAttributes.datePublished).getTime();
+    const lastDate = new Date(bAttributes.datePublished).getTime();
 
-
+    return lastDate - firstDate;
+  });
 }
