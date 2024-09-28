@@ -17,8 +17,8 @@ export const routeMeta: RouteMeta = {
         <p>I am a passionate software engineer and content creator who is constantly learning about the latest web technology to level up my skills.</p>
         <p>When I am not working, I love to exercise, learn foreign languages, and create content    to show the new features and best practices of the <span class="framework underline italic">Angular</span> framework.</p>
     </section>
-    <section class="flex justify-evenly">
-        <blog-card>
+    <section class="grid grid-cols-3 rows-auto-rows gap-4">
+        <blog-card class="grid grid-rows-subgrid row-span-1">
             <p header class="text-xl underline">Current Technical Stack<p>
             <ul class="text-left list-disc p-5">
                 <li>Angular</li>
@@ -29,7 +29,7 @@ export const routeMeta: RouteMeta = {
                 <li>PostgreSQL</li>
             </ul>
         </blog-card>
-        <blog-card>
+        <blog-card class="grid grid-rows-subgrid row-span-1">
             <p header class="text-xl underline">Areas of Interest<p>
             <ul class="text-left list-disc p-5">
                 <li>Angular Architecture</li>
@@ -37,7 +37,7 @@ export const routeMeta: RouteMeta = {
                 <li>Generative AI</li>
             </ul>
         </blog-card>
-        <blog-card>
+        <blog-card class="grid grid-rows-subgrid row-span-1">
             <p header class="text-xl underline">Hobbies<p>
             <ul class="text-left list-disc p-5">
                 <li>Learn Foreign Language</li>
