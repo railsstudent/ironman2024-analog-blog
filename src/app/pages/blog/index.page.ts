@@ -16,11 +16,11 @@ export const routeMeta: RouteMeta = {
   imports: [RouterLink, CardComponent, DatePipe],
   template: `
     <h1 class="mb-6">Blog Archive</h1>
-    <div class="flex flex-wrap justify-around">
+    <div class="grid grid-cols-3 auto-rows-auto gap-4">
       @for (post of posts; track post.attributes.slug) {
         @let attributes = post.attributes;
-        <blog-card class="grow shrink basis-1/3 mb-8 h-full">
-          <h2 class="m-0 pl-5 underline text-2xl mb-4">{{ attributes.title }}</h2>
+        <blog-card class="grid grid-rows-subgrid row-span-1">
+          <h2 header class="m-0 p-5 underline text-2xl mb-4">{{ attributes.title }}</h2>
           <p class="text-left m-0 mb-4">{{ attributes.description }}</p>
           <div footer class="flex justify-between px-5">
             <p class="inline-flex items-center rounded-md bg-blue-50 px-2 py-1 text-xs font-medium text-blue-700 ring-1 ring-inset ring-blue-700/10">

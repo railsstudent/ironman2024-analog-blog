@@ -4,7 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'blog-card',
   standalone: true,
   template: `
-    <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+    <div class="badge grid grid-rows-[auto_minmax(0,_1fr)_auto] row-span-3">
       <div class="pt-2">
         <ng-content select="[header]" />
       </div>
@@ -17,5 +17,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
+  styles: `
+    .badge {
+      @apply max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700;
+    }
+  `,
 })
 export class CardComponent {}

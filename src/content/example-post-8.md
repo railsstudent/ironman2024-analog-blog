@@ -1,5 +1,5 @@
 ---
-title: My First Post 6
+title: My First Post 6.  This is a very very very very long title
 slug: 2022-12-24-my-first-post-6
 description: My First Post Description 6
 datePublished: '2022-12-24'
