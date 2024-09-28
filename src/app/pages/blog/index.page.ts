@@ -36,6 +36,6 @@ export const routeMeta: RouteMeta = {
 })
 export default class BlogComponent {
   readonly posts = injectContentFiles<PostAttributes>().sort(({attributes: a }, { attributes: b }) =>
-    new Date(a.datePublished).getTime() - new Date(b.datePublished).getTime()
+    new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime()
   );
 }
