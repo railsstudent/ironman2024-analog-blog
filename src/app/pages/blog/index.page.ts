@@ -35,10 +35,7 @@ export const routeMeta: RouteMeta = {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class BlogComponent {
-  readonly posts = injectContentFiles<PostAttributes>().sort(({attributes: aAttributes }, { attributes: bAttributes}) => { 
-    const firstDate = new Date(aAttributes.datePublished).getTime();
-    const lastDate = new Date(bAttributes.datePublished).getTime();
-
-    return lastDate - firstDate;
-  });
+  readonly posts = injectContentFiles<PostAttributes>().sort(({attributes: a }, { attributes: b }) =>
+    new Date(a.datePublished).getTime() - new Date(b.datePublished).getTime()
+  );
 }
