@@ -1,6 +1,7 @@
 import { RouteMeta } from '@analogjs/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { CardComponent } from '../components/card.component';
+import { MostRecentPostComponent } from '../components/most-recent-post.component';
 
 export const routeMeta: RouteMeta = {
     title: 'About Connie',
@@ -9,7 +10,7 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CardComponent],
+  imports: [CardComponent, MostRecentPostComponent],
   template: `
     <h1>Welcome to my blog!!!</h1>
     <section class="introduction mb-4">
@@ -29,6 +30,7 @@ export const routeMeta: RouteMeta = {
             </blog-card>
         }
     </section>
+    <blog-most-recent-post />
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
