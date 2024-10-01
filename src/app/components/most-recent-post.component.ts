@@ -7,10 +7,14 @@ import PostAttributes from '../post-attributes';
   standalone: true,
   imports: [],
   template: `
-    <h3>Latest Posts</h3>
-    <div>
+    <h2 class="text-left underline">Latest Posts</h2>
+    <div class="text-left">
       @for (post of mostRecentTwoPosts; track post.attributes.slug) {
-        <p>{{ post.attributes.datePublished  }}</p>
+        @let attributes = post.attributes;
+        <p>{{ attributes.title }}</p>
+        <p>{{ attributes.description }}</p>
+        <p>{{ attributes.datePublished  }}</p>
+        <button>Read</button>
       }
     </div>
   `,
